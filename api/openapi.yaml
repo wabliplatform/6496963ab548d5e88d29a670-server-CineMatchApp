@@ -22,6 +22,8 @@ tags:
   name: deploys
 - description: not yet ready
   name: users
+- description: not yet ready
+  name: movies
 paths:
   /deploys:
     post:
@@ -289,6 +291,139 @@ paths:
       - users
       x-method-get-by-params: "true"
       x-eov-operation-handler: controllers/UsersController
+  /movies:
+    post:
+      operationId: createmovies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/movies'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/movies'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - movies
+      x-eov-operation-handler: controllers/MoviesController
+  /movies/{moviesId}:
+    delete:
+      operationId: deletemovies
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: moviesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - movies
+      x-eov-operation-handler: controllers/MoviesController
+    get:
+      operationId: getmovies
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: moviesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/movies'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - movies
+      x-eov-operation-handler: controllers/MoviesController
+    put:
+      operationId: updatemovies
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: moviesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/movies'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/movies'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - movies
+      x-eov-operation-handler: controllers/MoviesController
+  /movies/getAll:
+    get:
+      operationId: getAllmovies
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/movies'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - movies
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/MoviesController
+  /movies/getByParams:
+    get:
+      operationId: getByParamsmovies
+      parameters:
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/movies'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - movies
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/MoviesController
 components:
   schemas:
     deploys:
@@ -314,4 +449,11 @@ components:
           type: string
       required:
       - user
+      type: object
+    movies:
+      example:
+        _id: _id
+      properties:
+        _id:
+          type: string
       type: object
