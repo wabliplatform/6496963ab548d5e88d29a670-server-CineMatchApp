@@ -1,0 +1,317 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: lampralexandros@gmail.com
+  description: This is a sample openApi document
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://wabli.netlify.app/
+  title: TempApi
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- description: okthess-community-6011
+  url: https://83.212.100.226:6011/v1
+security:
+- {}
+tags:
+- description: not yet ready
+  name: deploys
+- description: not yet ready
+  name: users
+paths:
+  /deploys:
+    post:
+      operationId: createdeploys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deploys'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deploys'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - deploys
+      x-eov-operation-handler: controllers/DeploysController
+  /deploys/{deploysId}:
+    delete:
+      operationId: deletedeploys
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: deploysId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - deploys
+      x-eov-operation-handler: controllers/DeploysController
+    get:
+      operationId: getdeploys
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: deploysId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deploys'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - deploys
+      x-eov-operation-handler: controllers/DeploysController
+    put:
+      operationId: updatedeploys
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: deploysId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deploys'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deploys'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - deploys
+      x-eov-operation-handler: controllers/DeploysController
+  /deploys/getAll:
+    get:
+      operationId: getAlldeploys
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/deploys'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - deploys
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/DeploysController
+  /deploys/getByParams:
+    get:
+      operationId: getByParamsdeploys
+      parameters:
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/deploys'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - deploys
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/DeploysController
+  /users:
+    post:
+      operationId: createusers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/users'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/users'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - users
+      x-eov-operation-handler: controllers/UsersController
+  /users/{usersId}:
+    delete:
+      operationId: deleteusers
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: usersId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - users
+      x-eov-operation-handler: controllers/UsersController
+    get:
+      operationId: getusers
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: usersId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/users'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - users
+      x-eov-operation-handler: controllers/UsersController
+    put:
+      operationId: updateusers
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: usersId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/users'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/users'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - users
+      x-eov-operation-handler: controllers/UsersController
+  /users/getAll:
+    get:
+      operationId: getAllusers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/users'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - users
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/UsersController
+  /users/getByParams:
+    get:
+      operationId: getByParamsusers
+      parameters:
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/users'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - users
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/UsersController
+components:
+  schemas:
+    deploys:
+      example:
+        _id: _id
+        deploy: deploy
+      properties:
+        _id:
+          type: string
+        deploy:
+          type: string
+      required:
+      - deploy
+      type: object
+    users:
+      example:
+        _id: _id
+        user: user
+      properties:
+        _id:
+          type: string
+        user:
+          type: string
+      required:
+      - user
+      type: object
