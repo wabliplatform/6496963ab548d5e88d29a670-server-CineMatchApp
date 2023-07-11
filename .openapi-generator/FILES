@@ -6,7 +6,6 @@ config.js
 controllers/Controller.js
 controllers/DeploysController.js
 controllers/MoviesController.js
-controllers/TrendingmoviesController.js
 controllers/UsersController.js
 controllers/index.js
 expressServer.js
@@ -14,7 +13,6 @@ index.js
 logger.js
 models/Deploys.js
 models/Movies.js
-models/Trendingmovies.js
 models/Users.js
 models/index.js
 mongooseDB.js
@@ -22,7 +20,6 @@ package.json
 services/DeploysService.js
 services/MoviesService.js
 services/Service.js
-services/TrendingmoviesService.js
 services/UsersService.js
 services/index.js
 utils/openapiRouter.js
