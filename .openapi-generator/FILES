@@ -3,6 +3,7 @@
 README.md
 api/openapi.yaml
 config.js
+controllers/AllmoviesController.js
 controllers/Controller.js
 controllers/DeploysController.js
 controllers/MoviesController.js
@@ -11,12 +12,14 @@ controllers/index.js
 expressServer.js
 index.js
 logger.js
+models/Allmovies.js
 models/Deploys.js
 models/Movies.js
 models/Users.js
 models/index.js
 mongooseDB.js
 package.json
+services/AllmoviesService.js
 services/DeploysService.js
 services/MoviesService.js
 services/Service.js

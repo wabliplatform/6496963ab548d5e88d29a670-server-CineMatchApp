@@ -24,6 +24,8 @@ tags:
   name: users
 - description: not yet ready
   name: movies
+- description: not yet ready
+  name: allmovies
 paths:
   /deploys:
     post:
@@ -424,6 +426,139 @@ paths:
       - movies
       x-method-get-by-params: "true"
       x-eov-operation-handler: controllers/MoviesController
+  /allmovies:
+    post:
+      operationId: createallmovies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/allmovies'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/allmovies'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - allmovies
+      x-eov-operation-handler: controllers/AllmoviesController
+  /allmovies/{allmoviesId}:
+    delete:
+      operationId: deleteallmovies
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: allmoviesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - allmovies
+      x-eov-operation-handler: controllers/AllmoviesController
+    get:
+      operationId: getallmovies
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: allmoviesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/allmovies'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - allmovies
+      x-eov-operation-handler: controllers/AllmoviesController
+    put:
+      operationId: updateallmovies
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: allmoviesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/allmovies'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/allmovies'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - allmovies
+      x-eov-operation-handler: controllers/AllmoviesController
+  /allmovies/getAll:
+    get:
+      operationId: getAllallmovies
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/allmovies'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - allmovies
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/AllmoviesController
+  /allmovies/getByParams:
+    get:
+      operationId: getByParamsallmovies
+      parameters:
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/allmovies'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - allmovies
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/AllmoviesController
 components:
   schemas:
     deploys:
@@ -451,6 +586,13 @@ components:
       - user
       type: object
     movies:
+      example:
+        _id: _id
+      properties:
+        _id:
+          type: string
+      type: object
+    allmovies:
       example:
         _id: _id
       properties:
