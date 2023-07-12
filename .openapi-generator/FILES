@@ -7,6 +7,7 @@ controllers/AllmoviesController.js
 controllers/Controller.js
 controllers/DeploysController.js
 controllers/MoviesController.js
+controllers/ShibaimagesController.js
 controllers/UsersController.js
 controllers/index.js
 expressServer.js
@@ -15,6 +16,7 @@ logger.js
 models/Allmovies.js
 models/Deploys.js
 models/Movies.js
+models/Shibaimages.js
 models/Users.js
 models/index.js
 mongooseDB.js
@@ -23,6 +25,7 @@ services/AllmoviesService.js
 services/DeploysService.js
 services/MoviesService.js
 services/Service.js
+services/ShibaimagesService.js
 services/UsersService.js
 services/index.js
 utils/openapiRouter.js

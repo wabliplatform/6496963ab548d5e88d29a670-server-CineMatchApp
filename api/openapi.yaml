@@ -26,6 +26,8 @@ tags:
   name: movies
 - description: not yet ready
   name: allmovies
+- description: not yet ready
+  name: shibaimages
 paths:
   /deploys:
     post:
@@ -559,6 +561,139 @@ paths:
       - allmovies
       x-method-get-by-params: "true"
       x-eov-operation-handler: controllers/AllmoviesController
+  /shibaimages:
+    post:
+      operationId: createshibaimages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shibaimages'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shibaimages'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - shibaimages
+      x-eov-operation-handler: controllers/ShibaimagesController
+  /shibaimages/{shibaimagesId}:
+    delete:
+      operationId: deleteshibaimages
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: shibaimagesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - shibaimages
+      x-eov-operation-handler: controllers/ShibaimagesController
+    get:
+      operationId: getshibaimages
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: shibaimagesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shibaimages'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - shibaimages
+      x-eov-operation-handler: controllers/ShibaimagesController
+    put:
+      operationId: updateshibaimages
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: shibaimagesId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shibaimages'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shibaimages'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - shibaimages
+      x-eov-operation-handler: controllers/ShibaimagesController
+  /shibaimages/getAll:
+    get:
+      operationId: getAllshibaimages
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/shibaimages'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - shibaimages
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/ShibaimagesController
+  /shibaimages/getByParams:
+    get:
+      operationId: getByParamsshibaimages
+      parameters:
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/shibaimages'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - shibaimages
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/ShibaimagesController
 components:
   schemas:
     deploys:
@@ -593,6 +728,13 @@ components:
           type: string
       type: object
     allmovies:
+      example:
+        _id: _id
+      properties:
+        _id:
+          type: string
+      type: object
+    shibaimages:
       example:
         _id: _id
       properties:
